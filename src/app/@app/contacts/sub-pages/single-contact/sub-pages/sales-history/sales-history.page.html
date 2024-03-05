@@ -1,0 +1,32 @@
+<ion-header class="custom-header" [translucent]="true">
+  <ion-toolbar class="custom-header ion-padding-end ion-padding-start" color="primary">
+    <ion-buttons class="ion-margin-top" slot="start">
+      <ion-back-button class="custom" defaultHref="home">
+      </ion-back-button>
+    </ion-buttons>
+    <h4 class="ion-margin ion-padding-top" style="font-weight: bold;">{{contactData.name}}</h4>
+    <!-- <ion-searchbar class="custom ion-margin-top" (ionInput)="handleInput($event)"></ion-searchbar> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1 class="ion-margin" style="font-weight: bold;">Sales</h1>
+
+  <app-list-card *ngFor="let cardData of results" [cardData]="cardData">
+    <!-- <ion-avatar slot="start">
+    <img [src]="'data:image/png;base64,' + cardData.avatar_256" />
+  </ion-avatar> -->
+    <ion-label class="ion-padding-start ion-padding-end">
+      <h4 class="custom-card-name">{{cardData.name}}</h4>
+      <p class="custom-p-tag">{{cardData.partner_id[1] || "N/A"}}</p>
+      <!-- <p class="custom-p-tag">{{cardData.state || "N/A"}}</p> -->
+      <p class="custom-p-tag" style="color:rgb(255, 180, 4);font-weight: bold;">{{cardData.type_name || "N/A"}}</p>
+      <p class="custom-p-tag">{{cardData.date_order || "N/A"}}</p>
+    </ion-label>
+    <!--... any other tags and logic ...-->
+  </app-list-card> <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon (click)="openModal()" name="add-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

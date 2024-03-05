@@ -1,0 +1,60 @@
+<app-toolbar [title]="session?.name" (backButtonAction)="closeModal()" [routeBackPath]="routeBackPath" ></app-toolbar>
+<ion-content>
+<ion-toolbar class="ion-margin-top" color="primary">
+  <ion-title slot="start">{{ viewTitle }}</ion-title>
+</ion-toolbar>
+<ion-toolbar color="primary">
+
+  <ion-buttons slot="start">
+    <ion-button [disabled]="isToday" (click)="today()">Today</ion-button>
+    <ion-button (click)="changeMode('month')">M</ion-button>
+    <ion-button (click)="changeMode('week')">W</ion-button>
+    <ion-button (click)="changeMode('day')">D</ion-button>
+    <!-- <ion-button (click)="loadEvents()">Load</ion-button> -->
+  </ion-buttons>
+</ion-toolbar>
+  <ion-card>
+    <ion-card-content>
+      <calendar [eventSource]="eventSource" [queryMode]="calendar.queryMode" [calendarMode]="calendar.mode"
+                [currentDate]="calendar.currentDate" [step]="calendar.step"
+                [preserveScrollPosition]="calendar.preserveScrollPosition" [startHour]="calendar.startHour" [endHour]="calendar.endHour"
+                (onCurrentDateChanged)="onCurrentDateChanged($event)" (onEventSelected)="onEventSelected($event)"
+                (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)"
+                (onDayHeaderSelected)="onDayHeaderSelected($event)"
+                [autoSelect] = "false"
+                [showEventDetail]="false"
+      >
+      </calendar>
+
+    </ion-card-content>
+  </ion-card>
+<ion-card *ngIf="session" color="light">
+
+  <form [formGroup]="sessionTime" (ngSubmit)="submitTime()">
+    <ion-card-content>
+      <ion-item color="light">
+        <ion-grid >
+          <ion-row >
+            <ion-col size="9">
+              <ion-text (click)="openStartTimePicker()">{{sessionTime?.controls?.startTime?.value ? sessionTime?.controls?.startTime?.value : 'Pick Start Hour'}}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item color="light">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="9">
+              <ion-text (click)="openEndTimePicker()">{{sessionTime?.controls?.endTime?.value ? sessionTime?.controls?.endTime?.value : 'Pick End Hour'}}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-buttons>
+        <ion-button fill = "solid" class="ion-padding" color="primary" type="submit" >Submit Time</ion-button>
+      </ion-buttons>
+    </ion-card-content>
+
+  </form>
+</ion-card>
+</ion-content>

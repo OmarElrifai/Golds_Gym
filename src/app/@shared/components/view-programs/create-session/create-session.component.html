@@ -1,0 +1,34 @@
+<ion-header   [translucent]="false" >
+  <ion-toolbar class="ion-padding" >
+    <ion-title class="ion-padding-top" style="font-weight: bold;">Update Session</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="sessionForm"  (ngSubmit)="submit()">
+    <ion-label class="ion-margin">
+      <ion-text>{{session.name}}</ion-text>
+    </ion-label>
+
+    <ion-item class="ion-margin">
+      <ion-select label="Project" formControlName="project_id" labelPlacement="stacked">
+        <ion-select-option value=""></ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="ion-margin">
+      <ion-select label="Customer" formControlName="cu" labelPlacement="stacked">
+        <ion-select-option value=""></ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="ion-margin">
+      <ion-select label="Project" formControlName="project_id" labelPlacement="stacked">
+        <ion-select-option value=""></ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </form>
+
+
+</ion-content>

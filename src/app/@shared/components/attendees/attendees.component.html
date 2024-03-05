@@ -1,0 +1,18 @@
+<ion-card>
+  <ion-card-header style="color: #1e2023" color = "light">
+    <ion-card-title>
+      Attendees
+    </ion-card-title>
+   <ion-text class="title-date">{{sessionTime?.slice(0,10)}}</ion-text>
+  </ion-card-header>
+  <ion-card-content  style="color: #1e2023; background-color: white">
+
+    <ion-item color="light"  *ngFor="let attendee of attendeesList">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" [src]="attendee?.data[0].image_1920 ? 'data:image/png;base64, ' + attendee?.data[0].image_1920 : '/assets/profile-pic.jpg'" />
+      </ion-thumbnail>
+      <ion-label style="color: #1e2023">{{attendee?.data[0].name}}</ion-label>
+    </ion-item>
+  </ion-card-content>
+
+</ion-card>

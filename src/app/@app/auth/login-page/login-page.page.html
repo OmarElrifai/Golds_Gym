@@ -1,0 +1,21 @@
+
+
+<ion-content [fullscreen]="true" >
+    <div class="custom-header ion-text-center"></div>
+    <form [formGroup]="loginForm">
+
+        <div class="custom-login-form-container ion-padding">
+            <ion-item  class="ion-margin" color="light">
+                <ion-input label="Username"  formControlName="username" label-placement="floating" placeholder="John Smith"></ion-input>
+            </ion-item>
+            <ion-item color="light" class="ion-margin">
+                <ion-input type="password" formControlName="password" label="Password" label-placement="floating" placeholder="*********"></ion-input>
+            </ion-item>
+        </div>
+
+        <div class="custom-content-container ion-padding">
+            <ion-button  size="large" shape="round" (click)="login()" expand="block">Login</ion-button>
+
+        </div>
+    </form>
+</ion-content>

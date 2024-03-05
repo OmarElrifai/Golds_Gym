@@ -1,0 +1,64 @@
+
+<ion-content [fullscreen]="true">
+
+<!--  <img style="width: 100%; height: 55vh;" src="/assets/home.jpg" alt="">-->
+  <div class="coverPhoto"  *ngIf="shared.employee">
+    <app-toolbar class="ion-margin-bottom" [routeBackPath]="'/'"></app-toolbar>
+
+    <app-profile-photo [editable]=false
+                       [photoExist]="shared.employee.image_1024"
+                       [imageSrc]="shared.employee.image_1024">
+    </app-profile-photo>
+
+
+    <ion-label color="light" class="ion-text-center" *ngIf="shared.employee!=undefined" >
+      <h2>{{"Welcome,"}} {{shared.employee.name}}</h2>
+      <p>{{shared.employee.role}}</p>
+    </ion-label>
+  </div>
+  <div   *ngIf="shared.employee" class="content-body" >
+
+    <app-segment-tabs *ngIf="segments.length>0" [segments]="segments" (segmentChange)="onSegmentChange($event)">
+    </app-segment-tabs>
+
+
+
+    <ion-grid *ngIf="segmentValue =='time'">
+      <app-hr-home-card (clicked)="openTabs($event)"  [cardList]="timeCards"></app-hr-home-card>
+    </ion-grid>
+
+<!--    <ion-grid  *ngIf="segmentValue =='development'">-->
+<!--      <app-hr-home-card (clicked)="openTabs($event)" [cardList]="devCards"></app-hr-home-card>-->
+<!--    </ion-grid>-->
+
+    <ion-list  color="light" *ngIf="segmentValue =='profile'">
+      <ion-item  color="light" class="profile">
+        <ion-text >Employee Pin</ion-text>
+        <ion-text slot="end">{{shared.employee.registration_number}}</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Work Mobile</ion-text>
+        <ion-text slot="end" >{{shared.employee.phone}}</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Email</ion-text>
+        <ion-text slot="end" >{{shared.employee.work_email}}</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Birthday</ion-text>
+        <ion-text slot="end">{{shared.employee.birthday}}</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Gender</ion-text>
+        <ion-text slot="end">{{shared.employee.gender}}</ion-text>
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+
+</ion-content>

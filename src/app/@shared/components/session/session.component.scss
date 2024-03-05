@@ -1,0 +1,51 @@
+#menu-button{
+ position: absolute;
+  right: 30px;
+}
+.task-item  {
+  padding: 20px;
+  width: 100%;
+}
+.ion-text{
+  font-size: 12px;
+  color: #1e2023;
+  position: absolute;
+  left: 48px;
+}
+h2{
+  font-weight: bolder;
+  padding-bottom: 12px;
+
+}
+ion-item{
+  border-bottom: 0;
+}
+.line{
+  padding: 0px 0px 5px 5px
+}
+h2{
+  color: black;
+}
+
+.markAsDone{
+  position: absolute;
+  top: 8px;
+  right: 30px;
+}
+
+ion-buttons{
+}
+
+.ion-button1{
+  position: absolute;
+  right: 30px;
+  bottom: 25px;
+  background-color: white;
+}
+.ion-button1 span{
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  color: black;
+}
+

@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="modal-top"></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="leavesForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-select formControlName="holiday_status_id" label="Reason" label-placement="stacked" (ionChange)="onLeaveTypeChanged()">
+          <ion-select-option *ngFor="let type of leavesType" [value]=type.id>{{type.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input readonly="true" formControlName="request_date_from" label="From" labelPlacement="stacked" placeholder="From"></ion-input>
+
+        <ion-buttons slot="end">
+          <ion-button fill="solid" (click)="openFromCalendar()"  class="ion-padding" color="primary"  >Update Date</ion-button>
+        </ion-buttons>
+
+      </ion-item>
+      <ion-item  *ngIf="fromCalendarVisible" >
+        <ion-datetime  showDefaultButtons="true" (ionChange)="submitFromCalendar($event)"  (ionCancel)="cancelFromCalendar()"  presentation="date" [preferWheel]="true"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-input readonly="true" formControlName="request_date_to" label="To" labelPlacement="stacked" placeholder="To"></ion-input>
+
+        <ion-buttons slot="end">
+          <ion-button fill="solid" (click)="openToCalendar()"  class="ion-padding" color="primary"  >Update Date</ion-button>
+        </ion-buttons>
+      </ion-item>
+
+      <ion-item  *ngIf="toCalendarVisible" >
+        <ion-datetime  showDefaultButtons="true" (ionChange)="submitToCalendar($event)"  (ionCancel)="cancelToCalendar()"  presentation="date" [preferWheel]="true"></ion-datetime>
+      </ion-item>
+
+<!--      <div *ngIf="(selectedType!=undefined && selectedType.request_unit==='day')">-->
+<!--        <ion-item class="inputItem item-leave-height">-->
+<!--          <ion-input (click)="openToCalendar()" readonly="true" formControlName="request_date_to" label="{{'Leave To'}}" labelPlacement="stacked" ></ion-input>-->
+<!--        </ion-item>-->
+<!--        <ion-item  *ngIf="toCalendarVisible" >-->
+<!--          <ion-datetime  showDefaultButtons="true" (ionChange)="submitToCalendar($event)"  (ionCancel)="cancelToCalendar()"  presentation="date" [preferWheel]="true"></ion-datetime>-->
+<!--        </ion-item>-->
+<!--      </div>-->
+<!--      <div *ngIf="(selectedType!=undefined && selectedType.request_unit==='half_day')">-->
+<!--        <ion-item *ngIf="!halfDaySelect" class="inputItem item-leave-height" detail>-->
+<!--          <ion-input (click)="openToCalendar()" readonly="true" formControlName="request_date_to" label="{{'Leave To'}}" labelPlacement="stacked" ></ion-input>-->
+<!--        </ion-item>-->
+<!--        <ion-item  *ngIf="toCalendarVisible" >-->
+<!--          <ion-datetime  showDefaultButtons="true" (ionChange)="submitToCalendar($event)"  (ionCancel)="cancelToCalendar()"  presentation="date" [preferWheel]="true"></ion-datetime>-->
+<!--        </ion-item>-->
+
+<!--        <ion-item *ngIf="halfDaySelect" class="inputItem item-leave-height" detail>-->
+<!--          <ion-select label="{{'Select time'}}" labelPlacement="stacked" formControlName="request_date_from_period" placeholder="{{'Select One'}}"-->
+<!--                      interface="popover">-->
+<!--            <ion-select-option value="am">{{"Morning"}}</ion-select-option>-->
+<!--            <ion-select-option value="pm">{{"Afternoon"}}</ion-select-option>-->
+<!--          </ion-select>-->
+<!--        </ion-item>-->
+<!--        <ion-item class="inputItem item-leave-height" detail>-->
+<!--          <ion-label>{{"Half Day"}}</ion-label>-->
+<!--          <ion-checkbox labelPlacement="stacked" formControlName="halfDaySelect" color="dark"></ion-checkbox>-->
+<!--        </ion-item>-->
+<!--      </div>-->
+<!--      <div *ngIf="(selectedType!=undefined && selectedType.request_unit==='hour')">-->
+<!--        <ion-radio-group  formControlName="hourUnit">-->
+<!--          <ion-item class="inputItem item-leave-height" detail>-->
+<!--            <ion-label>{{"Day"}}</ion-label>-->
+<!--            <ion-radio labelPlacement="stacked" value="day" color="dark"></ion-radio>-->
+<!--          </ion-item>-->
+<!--          &lt;!&ndash; <ion-item class="inputItem item-leave-height" detail>-->
+<!--            <ion-label>Half Day</ion-label>-->
+<!--            <ion-radio value="half_day" color="dark"></ion-radio>-->
+<!--        </ion-item> &ndash;&gt;-->
+<!--          <ion-item class="inputItem item-leave-height" detail>-->
+<!--            <ion-label>{{"Custom hours"}}</ion-label>-->
+<!--            <ion-radio labelPlacement="stacked" value="hour" color="dark"></ion-radio>-->
+<!--          </ion-item>-->
+
+<!--        </ion-radio-group>-->
+<!--        <ion-item *ngIf="typeUnitHour==='day'" class="inputItem item-leave-height" detail>-->
+<!--          <ion-input (click)="openToCalendar()" readonly="true" formControlName="request_date_to" label="{{'Leave To'}}" labelPlacement="stacked" ></ion-input>-->
+<!--        </ion-item>-->
+<!--        <ion-item  *ngIf="toCalendarVisible" >-->
+<!--          <ion-datetime  showDefaultButtons="true" (ionChange)="submitToCalendar($event)"  (ionCancel)="cancelToCalendar()"  presentation="date" [preferWheel]="true"></ion-datetime>-->
+<!--        </ion-item>-->
+
+<!--        <ion-item *ngIf="typeUnitHour==='half_day'" class="inputItem item-leave-height" detail>-->
+<!--          <ion-select labelPlacement="stacked" label="{{'Select time'}}" formControlName="request_date_from_period" placeholder="{{'Select One'}}"-->
+<!--                      interface="popover">-->
+<!--            <ion-select-option value="am">{{"Morning"}}</ion-select-option>-->
+<!--            <ion-select-option value="pm">{{"Afternoon"}}</ion-select-option>-->
+<!--          </ion-select>-->
+<!--        </ion-item>-->
+<!--        <ion-item *ngIf="typeUnitHour==='hour'" class="inputItem item-leave-height" detail>-->
+<!--          <ion-input (click)="openStartTimePicker()" readonly="true" style="color: #1e2023" formControlName="request_hour_from" label= "{{'Hour From'}}" labelPlacement="stacked"></ion-input>-->
+<!--        </ion-item>-->
+<!--        <ion-item *ngIf="typeUnitHour==='hour'" class="inputItem item-leave-height" detail>-->
+<!--          <ion-input (click)="openEndTimePicker()" readonly="true" style="color: #1e2023" formControlName="request_hour_to" label= "{{'Hour To'}}" labelPlacement="stacked"></ion-input>-->
+<!--        </ion-item>-->
+<!--      </div>-->
+
+
+
+
+      <ion-item>
+        <ion-textarea formControlName="name" label="description" labelPlacement="stacked" placeholder="Description"></ion-textarea>
+      </ion-item>
+      <ion-buttons >
+        <ion-button fill="solid"  class="ion-padding" color="primary" type="submit" >Submit</ion-button>
+      </ion-buttons>
+
+
+
+    </ion-list>
+  </form>
+</ion-content>

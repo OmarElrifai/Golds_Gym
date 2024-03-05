@@ -1,0 +1,9 @@
+<ion-segment class="segment-style" [ngClass]="{'customClass':customClass}" [(ngModel)]="segmentValue"
+  (ionChange)="emitValue()">
+  <ion-segment-button *ngFor="let seg of segments" [value]="seg.key" >
+    <div class="seg-btn seg-icon" *ngIf="seg.includeIcon">
+      <ion-icon  size="large" slot="center" name={{seg.icon}}></ion-icon>
+    </div>
+    <ion-label [ngClass]="{'ion-label-segment':seg.includeIcon}"  *ngIf="!seg.includeIcon || seg.textRequired">{{seg.text}}</ion-label>
+  </ion-segment-button>
+</ion-segment>

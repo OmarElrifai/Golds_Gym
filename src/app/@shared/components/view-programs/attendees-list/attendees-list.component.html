@@ -1,0 +1,22 @@
+<ion-header >
+  <ion-toolbar  color = "light">
+    <div class="modal-top"></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color = "light">
+  <ion-card *ngIf="editAttendance" color = "light">
+    <ion-card-header style="color: #1e2023" color = "light">
+      <ion-card-title>
+        Add Attendee
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="background-color:white ">
+        <ion-select  style="background-color:white; border-bottom: rgba(111,118,112,0.22) solid 1px"  (ionChange)="addAttendance($event)" [multiple]="true">
+          <ion-select-option *ngFor="let customer of enrolledList" [value]="customer.data[0].id">{{customer.data[0].name}}</ion-select-option>
+        </ion-select>
+    </ion-card-content>
+  </ion-card>
+  <app-attendees [sessionTime]="session.session_time" [attendeesList]="attendeesList"></app-attendees>
+
+</ion-content>

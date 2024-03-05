@@ -1,0 +1,7 @@
+{
+  "name": "Golds Gym",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

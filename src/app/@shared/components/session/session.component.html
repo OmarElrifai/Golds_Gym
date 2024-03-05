@@ -1,0 +1,25 @@
+<app-list-card  *ngFor="let session of results">
+  <div class="task-item">
+
+    <ion-icon *ngIf="isMenuVisible" id="menu-button" name="ellipsis-vertical" (click)="openMenu($event,session)"></ion-icon>
+    <ion-label >
+      <h2>{{session?.name}}</h2>
+    </ion-label>
+    <ion-label>
+      <ion-icon name="calendar-clear-sharp"></ion-icon><ion-text class="ion-text">{{session?.session_time ? session?.session_time.split(" ")[0] : "N/A"}}</ion-text>
+    </ion-label>
+    <ion-label>
+      <ion-icon name="time"></ion-icon><ion-text class="ion-text">{{session?.session_time ? session?.session_time?.split(" ")[1]?.slice(0,5) : "N/A"}} - 2:00</ion-text>
+<!--      <ion-icon name="time"></ion-icon><ion-text class="ion-text">{{session?.session_time ? session?.session_time?.split(" ")[1]?.slice(0,5) : "N/A"}} - {{session?.date_deadline ? session?.date_deadline?.split(" ")[1]?.slice(0,5) : "N/A"}}</ion-text>-->
+    </ion-label>
+
+    <ion-label>
+      <ion-icon name="location-sharp"></ion-icon><ion-text class="ion-text">{{session?.company_id[1]}}</ion-text>
+    </ion-label>
+    <button  (click) = "addViewAttendees(session)" class="ion-button1">
+      <span class="attendeesButtonText">Attendees</span><ion-badge>{{session?.attend_ids.length}}</ion-badge>
+    </button>
+  </div>
+
+
+</app-list-card>

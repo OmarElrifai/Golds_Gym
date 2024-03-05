@@ -1,0 +1,15 @@
+
+
+<ion-card class="custom-ion-card">
+
+  <ion-card-content style="padding:0; ">
+
+    <!-- Adding the edit icon with custom style -->
+    <ion-icon color="primary" *ngIf="isEditBtnVisible" name="ellipsis-vertical-sharp" class="custom-edit-ion-icon"></ion-icon>
+    <!-- <ion-icon  name="pencil-outline" style="position: absolute; top: 10px; right: 10px; z-index: 2; width:15px;height:15px"></ion-icon> -->
+
+    <ion-item lines="none" color="light">
+      <ng-content></ng-content>
+    </ion-item>
+  </ion-card-content>
+</ion-card>

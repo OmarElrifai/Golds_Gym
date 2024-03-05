@@ -1,0 +1,124 @@
+  <ion-content [fullscreen]="true">
+    <div class="background-img">
+      <img style="width: 100%; height: 55vh;" src="/assets/home.jpg" alt="">
+    </div>
+    <div class="page-content">
+      <ion-grid>
+
+        <ion-row>
+          <ion-col  size="8" sizeMd="9" class="" >
+            <ion-item  lines="none" >
+              <ion-label class="">
+                <h2 style="font-weight: bold; font-size: large;" class="ion-text-wrap">{{shared.employee?.name}}</h2>
+                <ion-note style="font-size: smaller;" color="medium">{{shared.employee?.role}}</ion-note>
+              </ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col routerLink="/auth/login" size="4" sizeMd="3">
+            <div class="ion-text-center  ion-padding custom-logout-button" (click)="logoutUser()">Logout</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+  <ion-grid  *ngIf="shared.employee?.department_id[0] != 1" style="background-color: white; border-radius: 50px;" class="ion-padding ion-margin">
+    <ion-row class="ion-margin-bottom">
+      <ion-col size="4" routerLink="/calendar" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+        <ion-item lines="none" color="light">
+          <div >
+            <ion-icon class="custom-home-page-icons" color="primary" name="calendar"></ion-icon>
+            <ion-label class="ion-margin-top custom-icon-label" color="medium">Calendar</ion-label>
+          </div>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="4" *ngIf="shared.employee?.department_id[0] == 2" routerLink="/sales" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+        <ion-item lines="none" color="light">
+          <div >
+            <ion-icon class="custom-home-page-icons" color="primary" name="bar-chart"></ion-icon>
+            <ion-label class="ion-margin-top custom-icon-label" color="medium">Sales</ion-label>
+          </div>
+        </ion-item>
+      </ion-col>
+
+
+      <ion-col size="4" routerLink="/contacts" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+        <ion-item lines="none" color="light">
+          <div >
+            <ion-icon class="custom-home-page-icons" color="primary" name="book"></ion-icon>
+            <ion-label class="ion-margin-top custom-icon-label" color="medium">Members</ion-label>
+          </div>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="4" routerLink="/programs" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+          <ion-item lines="none" color="light">
+            <div >
+              <ion-icon class="custom-home-page-icons" color="primary" name="barbell"></ion-icon>
+              <ion-label class="ion-margin-top custom-icon-label" color="medium">Programs</ion-label>
+            </div>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="4" routerLink="/hr" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+          <ion-item lines="none" color="light">
+            <div >
+              <ion-icon class="custom-home-page-icons" color="primary" name="people-circle"></ion-icon>
+              <ion-label class="ion-margin-top custom-icon-label" color="medium">HR</ion-label>
+            </div>
+          </ion-item>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="shared.employee?.department_id[0] == 1" style="background-color: white; border-radius: 50px;" class="ion-padding ion-margin">
+        <ion-row class="ion-margin-bottom">
+          <ion-col size="4" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+            <ion-item (click)="openCalendar()" lines="none" color="light">
+              <div >
+                <ion-icon class="custom-home-page-icons" color="primary" name="calendar"></ion-icon>
+                <ion-label class="ion-margin-top custom-icon-label" color="medium">Calendar</ion-label>
+              </div>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="4" routerLink="/sales" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+            <ion-item lines="none" color="light">
+              <div >
+                <ion-icon class="custom-home-page-icons" color="primary" name="bar-chart"></ion-icon>
+                <ion-label class="ion-margin-top custom-icon-label" color="medium">Sales</ion-label>
+              </div>
+            </ion-item>
+          </ion-col>
+
+
+          <ion-col size="4" routerLink="/contacts" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+            <ion-item lines="none" color="light">
+              <div >
+                <ion-icon class="custom-home-page-icons" color="primary" name="book"></ion-icon>
+                <ion-label class="ion-margin-top custom-icon-label" color="medium">Members</ion-label>
+              </div>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="4" routerLink="/programs" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+            <ion-item lines="none" color="light">
+              <div >
+                <ion-icon class="custom-home-page-icons" color="primary" name="barbell"></ion-icon>
+                <ion-label class="ion-margin-top custom-icon-label" color="medium">Programs</ion-label>
+              </div>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="4" routerLink="/hr" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+            <ion-item lines="none" color="light">
+              <div >
+                <ion-icon class="custom-home-page-icons" color="primary" name="people-circle"></ion-icon>
+                <ion-label class="ion-margin-top custom-icon-label" color="medium">HR</ion-label>
+              </div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  </ion-grid>
+
+    </div>
+</ion-content>

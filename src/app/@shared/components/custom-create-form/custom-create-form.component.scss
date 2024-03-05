@@ -1,0 +1,44 @@
+.custom-header {
+    border-radius: 0 0 0 80px;
+    min-height: 80px;
+}
+
+.custom-toolbar{
+    border-radius: 0 0 0 80px;
+    min-height: 80px;
+}
+
+ion-searchbar.custom {
+    --border-radius: 25px;
+}
+
+ion-back-button.custom {
+    --icon-font-size: 35px;
+}
+.custom-form-inputs-container{
+    background-color: #FFD41D;
+    width: 100%;
+    height: 300px;
+    border-radius: 0 0 0 80px;
+    position: absolute;  
+    top:0;
+    padding-top: 80px;
+    // padding-left:20px;
+    // padding-right:20px;
+    // padding-bottom:0px;
+}
+
+.custom-content-container{
+    position: absolute;
+    top: 320px;
+    width:100%
+    // padding: 10px;
+}
+
+
+
+// @media (prefers-color-scheme: dark){
+//     .custom-header{
+//         background-color:red
+//     }
+// } to style class with different properties in dark mode

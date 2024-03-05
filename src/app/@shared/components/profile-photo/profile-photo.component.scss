@@ -1,0 +1,19 @@
+.contact-profile {
+  width: 200px;
+  height: 180px;
+  margin: 5vh auto 0 auto;
+  display: block;
+  border-radius: 50%;
+}
+.contact-profile-internal {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: inline
+}
+.buttons-bar{
+  display: flex;
+  position: absolute;
+  bottom:0;
+  left:27%
+}

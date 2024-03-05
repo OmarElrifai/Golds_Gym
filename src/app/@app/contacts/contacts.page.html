@@ -1,0 +1,30 @@
+<ion-header  class="custom-header" [translucent]="true">
+  <ion-toolbar class="custom-header ion-padding-end ion-padding-start" color="primary" >
+    <ion-buttons   class="ion-margin-top"  slot="start">
+      <ion-back-button class="custom" defaultHref="home">
+      </ion-back-button>
+    </ion-buttons>
+<ion-searchbar class="custom ion-margin-top" (ionInput)="handleInput($event)"></ion-searchbar>
+  </ion-toolbar >
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1 class="ion-margin" style="font-weight: bold;">Members</h1>
+<app-list-card [isEditBtnVisible]="true" *ngFor="let cardData of results" [cardData]="cardData" (click)="openSingleContact(cardData)">
+  <ion-avatar slot="start">
+    <img [src]="'data:image/png;base64,' + cardData.avatar_256" />
+  </ion-avatar>
+  <ion-label>
+    <h4 class="custom-card-name">{{cardData.name}}</h4>
+    <p class="custom-p-tag">{{cardData.contact_address_complete || "N/A"}}</p>
+    <p class="custom-p-tag">{{cardData.phone || cardData.mobile || "N/A"}}</p>
+    <p class="custom-p-tag">{{cardData.email || "N/A"}}</p>
+  </ion-label>
+  <!--... any other tags and logic ...-->
+</app-list-card>
+  <ion-fab (click)="openModal()" slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

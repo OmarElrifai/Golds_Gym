@@ -1,0 +1,65 @@
+<!--<app-toolbar [routeBackPath]=""></app-toolbar>-->
+<ion-header>
+  <ion-toolbar *ngIf="isManager">
+    <div class="flex-container">
+      <ion-buttons slot="start"  >
+        <ion-button shape="round" style="min-width: 16vh" fill="solid"  color="primary" (click)="approve()" ><ion-icon slot="start" name="create-outline"></ion-icon>Approve</ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end" >
+        <ion-button shape="round" style="min-width: 16vh" fill="solid" color="danger" (click)="reject()" ><ion-icon slot="start" name="create-outline"></ion-icon>Reject</ion-button>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="!isManager">
+    <ion-buttons  *ngIf="leave.state!= 'validate' && leave.state!= 'confirm' && leave.state!='refuse'&& leave.state!='cancel'" slot="start" class="ion-padding">
+      <ion-button shape="round" style="min-width: 14vh" slot="start" fill="solid"  color="primary" (click)="edit()" ><ion-icon slot="start"  name="create-outline"></ion-icon>Edit</ion-button>
+    </ion-buttons>
+
+    <ion-buttons *ngIf="leave.state == 'draft'" class="ion-justify-content-center ion-text-center">
+      <ion-button shape="round"  style="min-width: 14vh" slot="end" fill="solid" color="success" (click)="submit()" ><ion-icon slot="start" name="create-outline"></ion-icon> Submit</ion-button>
+    </ion-buttons>
+
+    <ion-buttons *ngIf="leave.state == 'draft'" slot="end" class="ion-padding">
+      <ion-button shape="round" style="min-width: 14vh" fill="solid" color="danger" (click)="delete()" ><ion-icon slot="start" name="trash"></ion-icon>Delete</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+
+        <ion-grid class="list-container ion-margin">
+          <ion-row  class="list-item">
+            <ion-col size="8">State:</ion-col>
+            <ion-col *ngIf="leave.state == 'draft' || leave.state=='validate1'||leave.state=='confirm'">{{leave.state}}</ion-col>
+            <ion-col *ngIf="leave.state=='validate'">approved</ion-col>
+            <ion-col *ngIf="leave.state=='refuse'||leave.state=='cancel'">{{leave.state=='cancel'?'Cancelled':'Refused'}}</ion-col>
+          </ion-row>
+          <ion-row  class="list-item">
+            <ion-col size="8">Reason:</ion-col>
+            <ion-col>{{leave.holiday_status_id[1]}}</ion-col>
+          </ion-row>
+          <ion-row  class="list-item">
+            <ion-col size="8">From:</ion-col>
+            <ion-col>{{leave.date_from}}</ion-col>
+          </ion-row>
+          <ion-row  class="list-item">
+            <ion-col size="8">To:</ion-col>
+            <ion-col>{{leave.date_to}}</ion-col>
+          </ion-row>
+          <ion-row class="list-item">
+            <ion-col size="8">Leave Period</ion-col>
+            <ion-col>{{leave.number_of_days_display}} Day</ion-col>
+          </ion-row>
+          <ion-row  class="list-item-last">
+            <ion-col size="8">Description:</ion-col>
+            <ion-col>{{leave.private_name}}</ion-col>
+          </ion-row>
+
+        </ion-grid>
+
+
+
+</ion-content>

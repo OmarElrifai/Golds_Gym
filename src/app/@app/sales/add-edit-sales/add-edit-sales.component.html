@@ -1,0 +1,87 @@
+<ion-header   [translucent]="false" >
+  <ion-toolbar color="primary" class="ion-padding" >
+    <ion-title class="ion-padding-top" style="font-weight: bold;">{{sale? 'Update Sale':'New Sale'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <form [formGroup]="salesForm"  (ngSubmit)="submit()">
+
+            <ion-item  class="ion-margin" >
+              <ion-select formControlName="partner_id" label="Customer"  labelPlacement="stacked" >
+                <ion-select-option *ngFor="let customer of customers" [value]=customer.id >{{customer.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="ion-margin" >
+              <ion-select formControlName="order_type" label="Order Type" labelPlacement="stacked">
+                <ion-select-option [value]="'new'" >New</ion-select-option>
+                <ion-select-option [value]="'cancel'" >Cancel</ion-select-option>
+                <ion-select-option [value]="'freeze'" >Freeze</ion-select-option>
+                <ion-select-option [value]="'unfreeze'" >Unfreeze</ion-select-option>
+                <ion-select-option [value]="'renew'" >Renewal</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item style="position: relative" class="ion-margin" >
+              <ion-input formControlName="invoice_date" readonly="true" label="Invoice Date" labelPlacement="stacked" type="string" style="width: 50%"></ion-input>
+              <ion-button fill="solid" style="position: absolute;right: 10px;" (click)="makeInvoiceDateVisible()">Add Date</ion-button>
+            </ion-item>
+
+            <ion-item class="ion-margin"  *ngIf="invoiceDateVisible">
+              <ion-datetime showDefaultButtons="true" presentation="date" [preferWheel]="true" (ionChange)="onInvoiceDateSubmit($event)" (ionCancel)="onInvoiceDateCanceled()" ></ion-datetime>
+            </ion-item>
+
+            <ion-item class="ion-margin" >
+              <ion-select (ionChange)="updateProducts($event)"  formControlName="cat_id" label="Category" labelPlacement="stacked">
+                <ion-select-option *ngFor="let category of productsCategories" [value]="category.id" >{{category.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="ion-margin" >
+              <ion-select   formControlName="product_id" label="Product" labelPlacement="stacked">
+                <ion-select-option *ngFor="let product of products" [value]="product.id" >{{product.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+
+          <ion-item class="ion-margin" >
+            <ion-select (ionChange)="setStartDate($event)" (click)="getAllowedPrograms()" formControlName="program_id" label="Program" labelPlacement="stacked">
+              <ion-select-option *ngFor="let program of programs" [value]="program.id" >{{program.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+            <ion-item style="position: relative" class="ion-margin" >
+              <ion-input formControlName="start_date" readonly="true" label="Start Date" labelPlacement="stacked" type="string" style="width: 50%"></ion-input>
+            </ion-item>
+
+
+            <ion-item class="ion-margin" >
+              <ion-select formControlName="payment_term_id" label="Payment Terms" labelPlacement="stacked">
+                <ion-select-option *ngFor="let paymentTerm of paymentsTerms" [value]="paymentTerm.id"  >{{paymentTerm.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="ion-margin" >
+              <ion-select formControlName="pricelist_id" label="Price List" labelPlacement="stacked">
+                <ion-select-option *ngFor="let priceList of pricelists" [value]="priceList.id"  >{{priceList.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="ion-margin" >
+              <ion-input formControlName="payment_ref" label="Payment Reference" type="string" labelPlacement="stacked"  ></ion-input>
+
+            </ion-item>
+
+
+
+
+
+        <ion-button type="submit" expand="block" class="ion-margin"  shape="round">{{sale? 'Update':'Create'}}</ion-button>
+
+    </form>
+
+
+</ion-content>
+
+

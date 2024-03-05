@@ -1,0 +1,23 @@
+<ion-row  >
+  <ion-col  class="dashboard-col" *ngFor="let card of cardList" (click)="onCardClick(card.action)"  size="6" size-md="3">
+    <ion-card  color="light">
+      <ion-card-content>
+        <div class="ion-align-self-center ion-align-items-center ion-padding-top" style="text-align: center; justify-content: center">
+          <ion-icon  *ngIf="card.icon" color="primary" size="large" name="{{card.icon}}"></ion-icon>
+          <div *ngIf="card.img" >
+            <img alt="Silhouette of mountains" height="30px" width="30px" src="{{card.img}}" />
+          </div>
+          <p>{{card.text}}</p>
+        </div>
+
+      </ion-card-content>
+      <div [style.visibility]="card.hasNotification?'visible':'hidden'"   class="notification-container">
+        <div class="notification">
+
+        </div>
+      </div>
+
+    </ion-card>
+  </ion-col>
+</ion-row>
+

@@ -1,0 +1,11 @@
+
+
+<ion-content [fullscreen]="true">
+  <div class="coverPhoto">
+    <app-toolbar [routeBackPath]="'/hr'"></app-toolbar>
+
+  </div>
+  <ion-grid  class="content-body">
+    <app-hr-home-card [cardList]="buttons"  (clicked)="openTabs($event)"></app-hr-home-card>
+  </ion-grid>
+</ion-content>

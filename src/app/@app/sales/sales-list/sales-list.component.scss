@@ -1,0 +1,45 @@
+h3{
+  font-size: 1rem;
+  font-weight: bold;
+}
+.grid{
+  display: grid;
+  grid-template-columns: 30% auto;
+
+}
+.col{
+  font-size: small;
+}
+.buttons{
+  position: relative;
+  padding-top: 10px;
+  height: 50px;
+}
+.refund{
+  position: absolute;
+  right: 0;
+}
+.receipt{
+  position: absolute;
+  right: 0;
+  bottom: 45px;
+  padding: 7px;
+  border-radius: 3px;
+  color: white;
+  background-color: #FFD41D;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.sale-container{
+  height: 130px
+
+}
+.list-card-header{
+  position: relative;
+  padding: 10px 0;
+}
+.order-date{
+  font-size: small;
+  position: absolute;
+  right: 0;
+}

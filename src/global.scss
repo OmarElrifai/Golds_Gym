@@ -1,0 +1,178 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+/* swiper css */
+@import 'swiper/css';
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    margin: 5vh auto 0 auto;
+    display: block;
+    border-radius: 50%;
+  }
+  .custom-header{
+    border-radius: 0 0 0 80px;
+        min-height: 80px;
+}
+ion-searchbar input{
+  --height: 30px;
+}
+ion-searchbar.custom {
+    --border-radius: 25px;
+}
+
+ion-back-button.custom {
+    --icon-font-size: 35px;
+}
+
+.custom-p-tag {
+    font-size: small;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-card-name {
+    font-weight: bold;
+    color: black;
+
+}
+
+
+.internal-view{
+  background-color: white;
+  border-radius: 20px;
+  width: 100%;
+  margin: 20px auto;
+}
+.internal-view ion-col:nth-child(1) p{
+  font-weight: bolder;
+}
+.content-body{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.list-item{
+  background-color: white;
+  border-bottom: rgba(199, 199, 199, 0.98) 1px solid;
+  margin-left: 3%;
+  font-family: Calibri;
+}
+.list-item-last{
+  background-color: white;
+  margin-left: 3%;
+  font-family: Calibri;
+}
+.list-container{
+  background-color: white;
+  border-bottom: rgba(199, 199, 199, 0.98) 1px solid;
+  border-radius: 10px;
+  margin-left: 3%;
+  font-family: Calibri;
+}
+ion-input{
+  --placeholder-color:blue
+}
+.container{
+  background-color: white;
+}
+// .calendar-hour-column {
+//     height:100px;
+// }
+
+// .weekview-with-event{
+//     width: 100px;
+// }
+
+// .weekview-with-event{
+//     color:red
+// }
+/* test change */
+.popOverFullScreen{
+  --width: 80%;
+}
+.cameraPopOver{
+  --width: 80%;
+  --ion-background-color: black;
+}
+.custom-modal {
+  padding-top: 20%;
+  --border-radius: 20px 20px 0px 0px;
+}
+@media only screen and (min-width: 768px) and (min-height: 600px){
+  .custom-modal {
+    padding-top:0;
+    --border-radius: 20px 20px 20px 20px;
+  }
+}
+
+.modal-top {
+  border-radius: 25px;
+  width: 50%;
+  height: 10px;
+  background: #dcdcdc;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+
+ion-alert.custom-alert {
+  --backdrop-opacity: 0.7;
+}
+
+.custom-alert .alert-button-group {
+  padding: 8px;
+}
+
+button.alert-button.alert-button-confirm {
+  background-color: var(--ion-color-success);
+  color: var(--ion-color-success-contrast);
+}
+
+.md button.alert-button.alert-button-confirm {
+  border-radius: 4px;
+}
+
+.ios .custom-alert button.alert-button {
+  border: 0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2);
+}
+
+.ios button.alert-button.alert-button-cancel {
+  border-right: 0;
+  border-bottom-left-radius: 13px;
+  border-top-left-radius: 13px;
+}
+
+.ios button.alert-button.alert-button-confirm {
+  border-bottom-right-radius: 13px;
+  border-top-right-radius: 13px;
+}
+
+
+
+

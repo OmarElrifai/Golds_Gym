@@ -1,0 +1,16 @@
+<app-toolbar [title]="'Payslip Details'" [routeBackPath]="'/hr/payslips'" ></app-toolbar>
+
+<ion-content class="ion-padding"  [fullscreen]="true">
+<ion-list class="ion-padding list-details">
+  <p>{{payslip.payslip.name}}</p>
+  <div class="list-item"  *ngFor="let line of payslip.lines">
+    <ion-grid >
+      <ion-row >
+        <ion-col size="10.5">{{line.name}}</ion-col>
+        <ion-col>{{line.amount}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-list>
+</ion-content>

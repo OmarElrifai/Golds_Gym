@@ -1,0 +1,19 @@
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-padding-vertical">
+      <ion-col (click)="changePassword()" >Change Password</ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-vertical">
+      <ion-col (click)="changeLanguage()" >Change Language</ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-vertical">
+      <ion-col (click)="logoutUser()">Log Out</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-select #lang (ionChange)="languageSelected($event)"  style="display: none">
+    <ion-select-option value="english">English</ion-select-option>
+    <ion-select-option value="arabic">Arabic</ion-select-option>
+  </ion-select>
+
+</ion-content>

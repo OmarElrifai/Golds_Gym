@@ -1,0 +1,5 @@
+<app-toolbar (backButtonAction)="sendBackAction()"  [routeBackPath]="'/calendar'" ></app-toolbar>
+<ion-content>
+  <app-session [results]="sessions"  [editAttendance]=false [editSchedule]=false  ></app-session>
+
+</ion-content>

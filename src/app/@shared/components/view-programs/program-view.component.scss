@@ -1,0 +1,43 @@
+.task-item  {
+  padding: 5vw ;
+  width: 100%;
+  padding-bottom: 9vh;
+}
+.ion-text{
+  font-size: 12px;
+  color: #1e2023;
+  position: absolute;
+  left: 50px;
+}
+ion-label:nth-child(1){
+  padding-bottom: 12px;
+}
+ion-label:nth-child(1) h2{
+  font-weight: bolder;
+}
+ion-item{
+  border-bottom: 0;
+}
+.line{
+  padding: 0px 0px 5px 5px
+}
+h2{
+  color: black;
+}
+
+ion-buttons{
+  height: 70px;
+}
+ion-buttons .ion-button1{
+  position: absolute;
+  right: 0px;
+}
+ion-buttons .ion-button1 span{
+  margin-right: 5px;
+}
+
+ion-buttons .ion-button2{
+  position: absolute;
+  left: 0px;
+}
+

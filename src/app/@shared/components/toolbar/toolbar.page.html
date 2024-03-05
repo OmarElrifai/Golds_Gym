@@ -1,0 +1,22 @@
+<ion-header class="custom-header" >
+  <ion-toolbar class="custom-header" style="z-index: 1" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="backButtonFunction()"  style="background-color: transparent" defaultHref={{routeBackPath}}></ion-back-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="isMenuVisible" slot="end">
+      <ion-button (click)="openMenu($event)" ><ion-icon name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="8" class="ion-margin-top">
+          <ion-title>{{title}}</ion-title>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+
+  </ion-toolbar>
+  <input class="search-bar" placeholder="search" type="text" *ngIf="isSearchBarVisible" (input)="handleInput($event)">
+
+</ion-header>

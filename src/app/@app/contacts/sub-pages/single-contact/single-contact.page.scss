@@ -1,0 +1,68 @@
+.page-content {
+    // min-height: 50vh;
+    height: 100%;
+    position: absolute;
+    top: 42vh;
+    width: 100vw;
+    background-color: aquamarine;
+    border-radius: 0px 50px 0px 0px;
+    background-color: #F2F0F3;
+}
+.coverPhoto{
+  background-image: url('/assets/beastMode.jpg') ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size:100% 100% ;
+  height: 300px;
+  justify-content: center;
+}
+
+.custom-contact-action-icons {
+    width: 30px;
+    height: 30px;
+}
+
+.custom-contact-main-icons {
+    width: 40px;
+    height: 40px;
+}
+
+.custom-icon-label {
+    font-size: small;
+
+}
+
+.remove-margin-and-padding {
+    margin: 0;
+    padding: 0;
+}
+
+.contact-name-id-info {
+    color: white;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    font-weight: bolder;
+}
+
+.contact-profile-info {
+    position: absolute;
+    top: 12%;
+    width: 100%;
+}
+
+.custom-icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

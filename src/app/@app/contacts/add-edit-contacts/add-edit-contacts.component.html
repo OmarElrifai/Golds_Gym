@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar  color = "light" class="ion-padding">
+    <ion-title class="ion-padding-top" style="color: #1e2023">New Member</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content  color = "light">
+  <app-profile-photo
+    [photoExist]="photoExist"
+    [editable]="photoEditable"
+    [imageSrc]="contactForm.controls.image_1920.value"
+    (editPhotoEvent)="editPhoto()"
+    (deletePhotoEvent)="deletePhoto()"
+  ></app-profile-photo>
+  <form [formGroup]="contactForm" (ngSubmit)="submit()" >
+    <input hidden="hidden"  #fileReader type="file" (change)="upload($event)" >
+        <ion-item color = "light" class="ion-margin" >
+          <ion-input style="color: #1e2023" formControlName="name" labelPlacement="stacked" label="Name"></ion-input>
+        </ion-item>
+
+        <ion-item  color = "light" class="ion-margin" >
+          <ion-input style="color: #1e2023" formControlName="phone" labelPlacement="stacked" label="Phone"></ion-input>
+        </ion-item>
+
+        <ion-item  color = "light" class="ion-margin" >
+          <ion-input style="color: #1e2023" formControlName="email" labelPlacement="stacked" label="Email"></ion-input>
+        </ion-item>
+
+        <ion-item  color = "light" class="ion-margin" >
+          <ion-input style="color: #1e2023" formControlName="street" labelPlacement="stacked" label="Street"></ion-input>
+        </ion-item>
+
+        <ion-item  color = "light" class="ion-margin" >
+          <ion-input style="color: #1e2023" formControlName="city" labelPlacement="stacked" label="City"></ion-input>
+        </ion-item>
+
+<!--        <ion-item  class="ion-margin" >-->
+<!--          <ion-input formControlName="country" labelPlacement="stacked" label="Country"></ion-input>-->
+<!--        </ion-item>-->
+
+    <ion-buttons>
+      <ion-button type="submit" class="ion-padding" color="primary" fill="solid">Submit</ion-button>
+    </ion-buttons>
+  </form>
+
+</ion-content>

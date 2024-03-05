@@ -1,0 +1,18 @@
+p{
+  font-size: 70%;
+}
+.item1 { grid-area: name; }
+.item2 {
+  grid-area: amount;
+  align-content: end;
+}
+.item3 { grid-area: employee; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'name amount'
+    'employee amount';
+
+}
+

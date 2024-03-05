@@ -1,0 +1,36 @@
+.page-content{
+    // min-height: 50vh;
+    height: 100%;
+    position: absolute;
+    top: 42vh;
+    width: 100vw;
+    background-color: aquamarine;
+    border-radius:  0px 50px 0px  0px ;
+    background-color: #F2F0F3;
+}
+ion-item div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+.custom-logout-button{
+    border-radius: 0 50px 0 50px;
+    background-color: #FFD41D;
+    // min-height:20px;
+    color: white;
+    font-weight: bold;
+    font-size: smaller;
+    margin-top:5px
+}
+
+.custom-home-page-icons{
+    width: 28px;
+    height: 28px;
+
+}
+
+.custom-icon-label{
+    font-size: x-small;
+
+}

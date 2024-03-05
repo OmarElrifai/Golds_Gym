@@ -1,0 +1,35 @@
+<ion-content>
+    <app-toolbar  [title]="program?.name" [isMenuVisible]=false  [isSearchBarVisible]=true (handleInputEvent)="handleInput($event)" (backButtonAction)="closeProgramModel()" ></app-toolbar>
+
+  <app-segment-tabs [segments]="segments"  (segmentChange)="updateView($event)"></app-segment-tabs>
+  <div>
+    <div>
+     <app-session *ngIf="segmentValue !== 'schedule'" (updateView)="setSessionsAndSchedule()" [results]="results" [editAttendance]="segmentValue === 'sessions'" [editSchedule]="segmentValue === 'sessions'" [isMenuVisible]="segmentValue === 'sessions'" ></app-session>
+     <div *ngIf="segmentValue === 'schedule'">
+       <ion-card *ngFor="let schedule of trainerDetails">
+         <ion-card-title>
+           <ion-item>
+             <ion-text>User ID:</ion-text>
+             <ion-text style="width: 50%; display: block; margin: auto;" slot="end">{{schedule?.user_id[1]}}</ion-text>
+           </ion-item>
+
+           <ion-item>
+             <ion-text>Role:</ion-text>
+             <ion-text style="width: 50%; display: block; margin: auto;" slot="end">{{schedule?.role_id[1]}}</ion-text>
+           </ion-item>
+
+           <ion-item *ngIf="schedule.start_datetime">
+             <ion-text>Shift Start Hour:</ion-text>
+             <ion-text style="width: 50%; display: block; margin: auto;" slot="end">{{schedule?.start_datetime.split(" ")[1].slice(0,5)}}</ion-text>
+           </ion-item>
+         </ion-card-title>
+       </ion-card>
+     </div>
+    </div>
+  </div >
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,15 @@
+<ion-item color="light" *ngFor="let row of list" class="ion-margin" >
+  <ion-select *ngIf="choicelist[0].data" style="color: #1e2023" color="light" (ionChange)="updateOrder($event,row.id)" label="Order" labelPlacement="stacked">
+    <ion-select-option *ngFor="let item of choicelist" [value]= item.data[0].id>{{item.data[0].name}}</ion-select-option>
+  </ion-select>
+  <ion-select *ngIf="!choicelist[0].data" style="color: #1e2023" (ionChange)="updateOrder($event,row.id)" label="Order" labelPlacement="stacked">
+    <ion-select-option *ngFor="let item of choicelist" [value]= item.id>{{item.name}}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item color="light" class="ion-margin" >
+  <ion-buttons slot="end">
+    <ion-button fill="solid" class="ion-padding" (click)="addOrder()" ><ion-icon name="add-circle"></ion-icon></ion-button>
+    <!--                <ion-button fill="solid" class="ion-padding" color="danger" (click)="deleteOrderLine()"><ion-icon name="trash"></ion-icon></ion-button>-->
+  </ion-buttons>
+</ion-item>

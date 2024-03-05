@@ -1,0 +1,36 @@
+<ion-header class="custom-header"   [translucent]="false" >
+  <ion-toolbar color="light" class="custom-toolbar ion-padding-end ion-padding-start" >
+    <ion-buttons class="ion-margin-top" slot="start">
+      <ion-back-button class="custom" (click)="cancel()" defaultHref="/">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-margin-top" style="font-weight: bold;">{{title || 'New Member'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="custom-form-inputs-container" >
+      <ion-grid>
+        <ion-row *ngFor="let field of fields">
+          <ion-col  size="12">
+            <ion-item class="ion-margin" color="priamry">
+<!--            <ion-input color="light" [label]="field.label" [value]="field.value" label-placement="floating" [placeholder]="field.placeholder"></ion-input>-->
+              <ng-content></ng-content>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-button expand="block" class="ion-margin" (click)="confirm()" shape="round">Create</ion-button>
+      </ion-grid>
+  </div>
+  <!-- <div class="custom-content-container">
+    <ion-grid>
+      <ion-row *ngFor="let field of fields">
+        <ion-col><ion-item class="ion-margin" color="priamry">
+            <ion-input label="Username" label-placement="floating" placeholder="John Smith"></ion-input>
+          </ion-item></ion-col>
+      </ion-row>
+      <ion-button expand="block" class="ion-margin" (click)="confirm()"  shape="round">Create</ion-button>
+    </ion-grid>
+  </div> -->
+
+</ion-content>

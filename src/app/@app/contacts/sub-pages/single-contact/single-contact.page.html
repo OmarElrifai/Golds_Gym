@@ -1,0 +1,178 @@
+<ion-content [fullscreen]="true">
+
+  <app-cover-photo [photo]="'/assets/beastMode.jpg'">
+    <app-toolbar class="ion-margin-bottom" [routeBackPath]="'/contacts'"></app-toolbar>
+
+    <app-profile-photo [editable]="editable"
+                       [photoExist]="this.contactForm.controls.image_1920.value"
+                       [imageSrc]="this.contactForm.controls.image_1920.value"
+                       (editPhotoEvent)="editPhoto()"
+                       (deletePhotoEvent)="deletePhoto()">
+
+    </app-profile-photo>
+
+    <ion-label *ngIf="!editable" color="light" style="width: 50%; display: block; margin: auto;" class="ion-text-center cardTitle"  >
+      <h2>{{contact?.name}}</h2>
+    </ion-label>
+  </app-cover-photo>
+  <div class="content-body" >
+
+    <app-segment-tabs *ngIf="segments.length>0" [segments]="segments" (segmentChange)="onSegmentChange($event)">
+    </app-segment-tabs>
+
+
+
+    <ion-grid *ngIf="segmentValue ==='programs'">
+<!--      <app-hr-home-card (clicked)="openTabs($event)"  [cardList]="timeCards"></app-hr-home-card>-->
+      <app-list-card (click)="viewProgram(cardData)" *ngFor="let cardData of programs" [cardData]="cardData">
+        <!-- <ion-avatar slot="start">
+          <img [src]="'data:image/png;base64,' + cardData.avatar_256" />
+        </ion-avatar> -->
+        <ion-label class="ion-padding-start ion-padding-end">
+          <h4 class="custom-card-name">{{cardData.name}}</h4>
+          <p class="custom-p-tag">{{cardData.date_start || "N/A"}} - {{cardData.date || "N/A"}} </p>
+          <!-- <p class="custom-p-tag">{{cardData.date || "N/A"}}</p> -->
+        </ion-label>
+        <!--... any other tags and logic ...-->
+      </app-list-card>
+    </ion-grid>
+
+    <!--    <ion-grid  *ngIf="segmentValue =='development'">-->
+    <!--      <app-hr-home-card (clicked)="openTabs($event)" [cardList]="devCards"></app-hr-home-card>-->
+    <!--    </ion-grid>-->
+
+    <form  *ngIf="segmentValue ==='profile' && editable" [formGroup]="contactForm" (ngSubmit)="submit()" >
+
+      <ion-list>
+        <input type="file" hidden="hidden" #fileUploader (change)="upload($event)">
+        <h3  style="margin-left: 20px" >Personal Information</h3>
+        <ion-item class="ion-margin" >
+          <ion-input formControlName="name" labelPlacement="stacked" label="Name"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin" >
+          <ion-input  labelPlacement="stacked" label="ClientID"></ion-input>
+        </ion-item>
+
+        <ion-item  class="ion-margin" >
+          <ion-input formControlName="phone" labelPlacement="stacked" label="Phone"></ion-input>
+        </ion-item>
+
+        <ion-item  class="ion-margin" >
+          <ion-input formControlName="email" labelPlacement="stacked" label="Email"></ion-input>
+        </ion-item>
+
+        <ion-item  class="ion-margin" >
+          <ion-input  labelPlacement="stacked" label="Birthday"></ion-input>
+        </ion-item>
+
+        <ion-item  class="ion-margin" >
+          <ion-input  labelPlacement="stacked" label="Referred by"></ion-input>
+        </ion-item>
+
+        <ion-item  class="ion-margin" >
+          <ion-input formControlName="email" labelPlacement="stacked" label="Email"></ion-input>
+        </ion-item>
+
+        <ion-item  class="ion-margin" >
+          <ion-input formControlName="street" labelPlacement="stacked" label="Street"></ion-input>
+        </ion-item>
+
+        <ion-item  class="ion-margin" >
+          <ion-input formControlName="city" labelPlacement="stacked" label="City"></ion-input>
+        </ion-item>
+
+        <h3  style="margin-left: 20px; margin-top: 30px" >Notification Methods</h3>
+
+        <ion-item  class="ion-margin" >
+          <ion-input  labelPlacement="stacked" label="Account Management"></ion-input>
+        </ion-item>
+
+        <ion-item  class="ion-margin" >
+          <ion-input  labelPlacement="stacked" label="Reminders and Schedule Changes"></ion-input>
+        </ion-item>
+
+        <ion-item  class="ion-margin" >
+          <ion-input  labelPlacement="stacked" label="News and Promos"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-buttons>
+            <ion-button slot="start" color="primary" fill="solid" type="submit"><ion-icon name="checkmark"></ion-icon><ion-text slot="end">Edit</ion-text></ion-button>
+          </ion-buttons>
+          <ion-buttons>
+            <ion-button slot="end" color="danger" fill="solid" (click)="cancel()" ><ion-icon name="trash"></ion-icon><ion-text slot="end">Cancel</ion-text></ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </form>
+
+    <ion-list  style="background-color: white" *ngIf="segmentValue ==='profile' && !editable">
+
+      <h3  style="margin:20px 20px; background-color: white" >Personal Information</h3>
+      <ion-item  color="light" class="profile">
+        <ion-text >Name</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;" slot="end">{{contact?.name}}</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Client ID</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;" slot="end">2390910291</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Phone</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;" slot="end" >{{contact?.phone}}</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Email</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;" slot="end" >{{contact?.email}}</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Street</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;"  slot="end">{{contact?.street}}</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >city</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;" slot="end">{{contact?.city}}</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Birthday</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;" slot="end">1980-02-01</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Referred By</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;" slot="end">Email</ion-text>
+      </ion-item>
+
+      <h3  style="margin:20px 20px; background-color: white; " >Notifications</h3>
+      <ion-item color="light" class="profile">
+        <ion-text >Account Management</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;" slot="end">Email</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >Reminders and Schedule Changes</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;" slot="end">Email</ion-text>
+      </ion-item>
+
+      <ion-item color="light" class="profile">
+        <ion-text >News and Promos</ion-text>
+        <ion-text  style="width: 50%; display: block; margin: auto;" slot="end">Email</ion-text>
+      </ion-item>
+
+
+        <ion-buttons class="ion-padding">
+          <ion-button color="primary" fill="solid" (click)="edit()"><ion-icon name="create"></ion-icon><ion-text slot="end">Edit</ion-text></ion-button>
+        </ion-buttons>
+    </ion-list>
+
+  </div>
+
+
+</ion-content>
+

@@ -1,0 +1,74 @@
+<app-toolbar [routeBackPath]="'hr/attendance'" [title]="!toolbarTitle?'Attendance List':toolbarTitle" ></app-toolbar>
+
+<ion-content [fullscreen]="true">
+  <app-list-card>
+    <ion-grid>
+      <ion-row >
+        <ion-col size="9">
+          <ion-buttons>
+            <ion-button (click)="openDatePicker()" >Select Date</ion-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-label >
+            <p>{{pickedDate}}</p>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </app-list-card>
+
+
+  <ion-list *ngIf="!viewPenalties">
+    <app-list-card *ngFor="let attendanceItem of attendance">
+      <ion-grid >
+        <ion-row *ngIf="!isManager">
+          <ion-col size="7" size-sm="8">
+            <ion-row><p class="attendance">Check In</p></ion-row>
+            <ion-row><p class="attendance">Check Out</p></ion-row>
+          </ion-col>
+          <ion-col>
+            <ion-row><p class="attendance">{{attendanceItem.check_in}}</p></ion-row>
+            <ion-row><p class="attendance">{{attendanceItem.check_out}}</p></ion-row>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="isManager || viewPenalties">
+          <ion-col size="4">
+            <div class="activity">{{"Day"}}</div>
+          </ion-col>
+          <ion-col size="8">
+            <div class="time">{{attendance.date}}</div>
+          </ion-col>
+          <ion-col size="4" *ngIf="attendance.check_in!=false">
+            <div class="activity">{{"Check In"}}</div>
+          </ion-col>
+          <ion-col size="8" *ngIf="attendance.check_in!=false">
+            <div class="time">{{attendance.check_in.split(' ')[1]}}</div>
+          </ion-col>
+          <ion-col size="4" *ngIf="attendance.check_out!=false">
+            <div class="activity">{{"Check out"}}</div>
+          </ion-col>
+          <ion-col size="8" *ngIf="attendance.check_out!=false">
+            <div class="time">{{attendance.check_out.split(' ')[1]}}</div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="activity">{{"problem"}}</div>
+          </ion-col>
+          <ion-col size="8">
+            <div class="time">{{attendance.type}}</div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="activity">{{"Hour"}}</div>
+          </ion-col>
+          <ion-col size="8">
+            <div class="time">{{attendance.no_hours}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </app-list-card>
+  </ion-list>
+
+
+
+</ion-content>

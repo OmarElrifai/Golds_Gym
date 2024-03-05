@@ -1,0 +1,31 @@
+<app-toolbar [title]="'Balance'" [routeBackPath]="'hr/leaves'"></app-toolbar>
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-card color="light" *ngFor="let balanceElement of balance">
+    <ion-card-header>
+      <ion-buttons>
+        <ion-button>{{balanceElement.name}}</ion-button>
+      </ion-buttons>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8" size-sm="9">Total:</ion-col>
+          <ion-col>{{balanceElement.allocation}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="8" size-sm="9">Approved:</ion-col>
+          <ion-col>{{balanceElement.leaves}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="8" size-sm="9">Balance:</ion-col>
+          <ion-col>{{balanceElement.remain}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

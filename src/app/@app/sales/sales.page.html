@@ -1,0 +1,7 @@
+<ion-header class="custom-header" [translucent]="true">
+  <app-toolbar routeBackPath="/home"></app-toolbar>
+</ion-header>
+<ion-content>
+  <app-hr-home-card [cardList]="cardData" (clicked)="openCard($event)" ></app-hr-home-card>
+</ion-content>
+

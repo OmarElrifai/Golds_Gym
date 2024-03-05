@@ -1,0 +1,24 @@
+.custom-header {
+    border-radius: 0 0 0 80px;
+    min-height: 80px;
+}
+
+ion-searchbar.custom {
+    --border-radius: 25px;
+}
+
+ion-back-button.custom {
+    --icon-font-size: 35px;
+}
+
+.custom-p-tag {
+    font-size: small;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-card-name {
+    font-weight: bold;
+    color: black;
+
+}

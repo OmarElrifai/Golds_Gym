@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="payslips.page.scss">
+<app-toolbar [routeBackPath]="'/hr'" [title]="'Employee Salary'"  ></app-toolbar>
+
+<ion-content [fullscreen]="true">
+  <app-list-card  *ngFor="let payslip of payslips">
+    <ion-grid>
+      <ion-row (click)="reviewPayslip(payslip)" >
+        <ion-col size="10.5">
+          <ion-row>
+            <p >{{payslip.payslip.name}}</p>
+          </ion-row>
+          <p>{{payslip.payslip.contract_id[1]}} </p>
+        </ion-col>
+
+        <ion-col class="ion-padding-top" >
+          <p>{{payslip.payslip.net_wage}}{{payslip.payslip.currency_id[1]}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </app-list-card>
+</ion-content>

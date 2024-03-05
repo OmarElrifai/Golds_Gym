@@ -1,0 +1,25 @@
+.profile ion-text{
+  font-size: 90%;
+}
+.camera{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: rgba(13, 13, 13, 0.24);
+}
+video {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.coverPhoto{
+  background-image: url('/assets/beastMode.jpg') ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size:100% 100% ;
+  height: 300px;
+}

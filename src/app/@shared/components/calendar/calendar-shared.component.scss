@@ -1,0 +1,37 @@
+.calendar-event-inner {
+  display: flex;
+  flex-direction: row;
+  /* stack children vertically */
+  height: auto;
+  width: 100%;
+}
+
+.event-title {
+
+  background-color: rgb(11, 148, 186);
+  padding: 2px 4px;
+  /* add space between each title */
+}
+
+.custom-multiple-events-container {
+  background-color: red;
+  height: 100px;
+}
+
+.overlapping-event {
+  background-color: #3aa80b;
+  /* Change as per your preference */
+  height: 25px;
+  width: 100%;
+  position: absolute;
+  /* Additional Styling as Needed */
+}
+
+form{
+  margin-top: 30px;
+}
+form, form ion-card-content, form ion-card-content ion-item,  form ion-card-content ion-item ion-grid,   form ion-card-content ion-item ion-grid ion-row,    form ion-card-content ion-item ion-grid ion-row ion-col,   form ion-card-content ion-item ion-grid ion-row ion-col ,  form ion-card-content ion-item ion-grid ion-row ion-col ion-input{
+  background-color: white;
+}
+
+
